@@ -63,6 +63,8 @@ console.log(q.removeQueue());
 
  */
 
+//LinkedList - nível de complexidade: O(length - n) - cresce em O de (n)
+
 // #nó head
 
 function LinkedList() {
@@ -74,16 +76,23 @@ function LinkedList() {
       next: null
     };
   };
+
   const add = value => {
     if (!head) {
       head = Node(value);
       length++;
       return head;
     }
+    // o bloco while dita o número de vezes que a lista cresce -
+
+    // 1 while = O(n)
+    // 2 while = O(n²)...
+
     let node = head;
     while (node.next) {
       node = node.next;
     }
+
     node.next = Node(value);
     length++;
     return node.next;
@@ -99,5 +108,7 @@ function LinkedList() {
 const list = LinkedList();
 console.log(list.length());
 list.add(1);
+list.add(2);
+list.add(3);
 console.log(list.length());
 list.print();
