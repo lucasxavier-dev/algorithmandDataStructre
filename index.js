@@ -63,39 +63,41 @@ console.log(q.removeQueue());
 
  */
 
-function LinkedList(){
-  let head = null
-  length = 0
-  const Node = (value) => {
+// #nó head
+
+function LinkedList() {
+  let head = null;
+  length = 0;
+  const Node = value => {
     return {
       value,
       next: null
+    };
+  };
+  const add = value => {
+    if (!head) {
+      head = Node(value);
+      length++;
+      return head;
     }
-  }
-  const add (value) =>{
-    if(!head){
-        head = Node(value)
-        length++
-        return head
+    let node = head;
+    while (node.next) {
+      node = node.next;
     }
-    let node = head
-    while(node.next){
-        node = node.next
-    }
-    node.next = Node(value)
-    length++
-    return node.next
-    console.log(node)
-  }
+    node.next = Node(value);
+    length++;
+    return node.next;
+    console.log(node);
+  };
   return {
     length: () => length,
-    add: (value) => add(value),
+    add: value => add(value),
     print: () => console.log(head)
-  }
+  };
 }
 
-const list = LinkedList()
-console.log(list.length())
-list.add(1)
-console.log(list.length())
-list.print()
+const list = LinkedList();
+console.log(list.length());
+list.add(1);
+console.log(list.length());
+list.print();
