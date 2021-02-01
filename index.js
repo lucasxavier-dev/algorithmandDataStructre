@@ -19,7 +19,8 @@ queue.push(6); //Last item in queue, First Out
 queue.pop(); //-1 - esta removendo o 6
 queue.push(7); //+1 - esta acrescentando o 7 no final do array
 
-console.log(queue);
+// console.log(queue); ----
+
 //shift - retira o primeiro elemento de um array, ou seja, retira o primeiro elemento colocado que representa o último a ser retirado
 
 queue.shift(); //remove -1
@@ -61,3 +62,40 @@ console.log(q.removeQueue());
 
 
  */
+
+function LinkedList(){
+  let head = null
+  length = 0
+  const Node = (value) => {
+    return {
+      value,
+      next: null
+    }
+  }
+  const add (value) =>{
+    if(!head){
+        head = Node(value)
+        length++
+        return head
+    }
+    let node = head
+    while(node.next){
+        node = node.next
+    }
+    node.next = Node(value)
+    length++
+    return node.next
+    console.log(node)
+  }
+  return {
+    length: () => length,
+    add: (value) => add(value),
+    print: () => console.log(head)
+  }
+}
+
+const list = LinkedList()
+console.log(list.length())
+list.add(1)
+console.log(list.length())
+list.print()
