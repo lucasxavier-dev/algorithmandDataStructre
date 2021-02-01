@@ -112,3 +112,57 @@ list.add(2);
 list.add(3);
 console.log(list.length());
 list.print();
+
+// tree = arvore
+
+/*
+1. A regra de navegação encontrada nas arvores é baseada em como se passa pelos nós da arvore
+1. Saber a ordem de execução
+2. Saber o passo base de navegação
+*/
+
+//#  preOrder = 10, 2, 3
+
+let tree = {
+  left: {
+    left: undefined,
+    right: {
+      value: 3
+    },
+    value: 2
+  },
+
+  right: undefined,
+  value: 10
+};
+//preOrder - Escreve primeiro - primeiro de tudo. Antes de navegar
+//anterior a order - primeiro imprime o value, vai para left, vai para right
+//preOrder - Escreve primeiro
+
+function preOrder(tree) {
+  console.log(tree.value);
+
+  tree.left && preOrder(tree.left);
+  tree.right && preOrder(tree.right);
+}
+
+function inOrder(tree) {
+  tree.left && inOrder(tree.left);
+  console.log(tree.value);
+  tree.right && inOrder(tree.right);
+}
+
+function posOrder(tree) {
+  tree.left && posOrder(tree.left);
+  tree.right && posOrder(tree.right);
+  console.log(tree.value);
+}
+
+console.log("#preOrder"); //preOrder - Escreve primeiro
+preOrder(tree);
+
+console.log("#inOrder"); //inOrder - Escreve no meio
+inOrder(tree);
+
+console.log("#posOrder"); //posOrder - Escreve depois/por último
+posOrder(tree);
